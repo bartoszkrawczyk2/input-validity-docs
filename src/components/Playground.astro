@@ -1,0 +1,56 @@
+---
+import { Code } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+type Props = {
+  htmlCode: string;
+  cssCode: string;
+  id: string;
+};
+
+const { htmlCode = "", cssCode = "", id } = Astro.props;
+
+const src = encodeURI(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>${cssCode}</style>
+<base href="http://localhost:4321/" />
+<link rel="stylesheet" href="/reset.css" />
+</head>
+<body>
+${htmlCode}
+</body>
+</html>`);
+---
+
+<div class="playground">
+  <div>
+    <button onclick={`${id}.src+=''`}>reload</button>
+    <iframe id={id} src={`data:text/html;charset=utf-8,${src}`}></iframe>
+  </div>
+  <div>
+    <Tabs>
+      <TabItem label="HTML">
+        <Code code={htmlCode} lang="html" />
+      </TabItem>
+      <TabItem label="CSS">
+        <Code code={cssCode} lang="css" />
+      </TabItem>
+    </Tabs>
+  </div>
+</div>
+
+<style>
+  .playground {
+    display: flex;
+  }
+  .playground > div {
+    width: 50%;
+  }
+  .playground iframe {
+    border: 1px solid var(--sl-color-gray-5);
+  }
+</style>

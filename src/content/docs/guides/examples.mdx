@@ -1,0 +1,22 @@
+---
+title: Examples
+description: test
+---
+
+import Playground from "../../../components/Playground.astro";
+
+<Playground
+  id="ex1"
+  htmlCode={`
+<p>playground example</p>
+<form action="/submit">
+  <input type="text" />
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`
+p {
+  color: red;
+}
+  `}
+/>

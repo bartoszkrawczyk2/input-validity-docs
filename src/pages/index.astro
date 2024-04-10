@@ -1,0 +1,63 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { Icon } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import logo from "../assets/input-validity.png";
+import Button from "../components/Button.astro";
+---
+
+<StarlightPage frontmatter={{ title: "input-validity", template: "splash" }}>
+  <div class="hero">
+    <Image alt="input-validity examples" src={logo} quality="100" />
+    <div class="not-content">
+      <p>Enhanced HTML5 input validation</p>
+      <div class="buttons">
+        <Button href="/getting-started/introduction">
+          Get started
+          <Icon name="right-arrow" />
+        </Button>
+        <Button
+          href="https://github.com/bartoszkrawczyk2/input-validity"
+          class="outline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on Github
+          <Icon name="external" />
+        </Button>
+      </div>
+    </div>
+  </div>
+</StarlightPage>
+
+<style is:global>
+  .hero {
+    text-align: center;
+  }
+  .hero img {
+    max-width: 600px;
+    width: 100%;
+    display: inline-block;
+  }
+  .hero p {
+    text-align: center;
+    margin-top: 0;
+  }
+  .hero > div {
+    margin-top: 0 !important;
+  }
+  h1 {
+    text-align: center;
+    margin-top: 2rem !important;
+  }
+  .content-panel {
+    border: 0 !important;
+    padding-top: 0 !important;
+  }
+  .buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>
