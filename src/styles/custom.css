@@ -2,6 +2,7 @@
 :root {
   --sl-color-accent-low: #0c2540;
   --sl-color-accent: #0069c4;
+  --sl-color-primary: #aecbef;
   --sl-color-accent-high: #aecbef;
   --sl-color-white: #ffffff;
   --sl-color-gray-1: #eceef2;
@@ -16,6 +17,7 @@
 :root[data-theme="light"] {
   --sl-color-accent-low: #c3d9f5;
   --sl-color-accent: #006bc7;
+  --sl-color-primary: #006bc7;
   --sl-color-accent-high: #08325e;
   --sl-color-white: #17181c;
   --sl-color-gray-1: #24272f;

@@ -12,13 +12,13 @@ type Props = HTMLAttributes<"a">;
   a {
     cursor: pointer;
     outline: 0;
-    color: #fff;
-    background-color: var(--sl-color-accent);
+    color: var(--sl-color-black);
+    background-color: var(--sl-color-primary);
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
-    border: 1px solid var(--sl-color-accent);
+    border: 1px solid var(--sl-color-primary);
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border-radius: 0.25rem;
@@ -29,6 +29,6 @@ type Props = HTMLAttributes<"a">;
   }
   a.outline {
     background-color: transparent;
-    color: var(--sl-color-accent);
+    color: var(--sl-color-primary);
   }
 </style>
