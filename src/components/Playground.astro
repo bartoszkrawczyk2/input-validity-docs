@@ -9,6 +9,7 @@ type Props = {
 };
 
 const { htmlCode = "", cssCode = "", id } = Astro.props;
+const base = import.meta.env.PROD ? Astro.site : "http://localhost:4321/";
 
 const src = encodeURI(`<!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ const src = encodeURI(`<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>${cssCode}</style>
-<base href="http://localhost:4321/" />
+<base href="${base}" />
 <link rel="stylesheet" href="/reset.css" />
 </head>
 <body>
@@ -26,9 +27,25 @@ ${htmlCode}
 </html>`);
 ---
 
-<div class="playground">
+<div class="playground not-content">
   <div>
-    <button onclick={`${id}.src+=''`}>reload</button>
+    <button class="reload" onclick={`${id}.src+=''`}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        ><path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"
+        ></path></svg
+      >
+      Reload
+    </button>
     <iframe id={id} src={`data:text/html;charset=utf-8,${src}`}></iframe>
   </div>
   <div>
@@ -46,11 +63,31 @@ ${htmlCode}
 <style>
   .playground {
     display: flex;
+    gap: 1rem;
   }
   .playground > div {
     width: 50%;
   }
   .playground iframe {
     border: 1px solid var(--sl-color-gray-5);
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .playground .reload {
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 5px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.8rem;
+  }
+  .playground .reload svg {
+    width: 0.8rem;
+    height: 0.8rem;
   }
 </style>

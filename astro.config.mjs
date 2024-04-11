@@ -3,6 +3,7 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://input-validity.pages.dev/",
   integrations: [
     starlight({
       customCss: ["./src/styles/custom.css"],
