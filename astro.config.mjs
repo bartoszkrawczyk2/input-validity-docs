@@ -21,7 +21,11 @@ export default defineConfig({
         },
         {
           label: "Guides",
-          items: [{ label: "Examples", link: "/guides/examples" }],
+          items: [
+            { label: "Displaying messages", link: "/guides/messages" },
+            { label: "Custom messages", link: "/guides/custom-messages" },
+            { label: "Styling", link: "/guides/styling" },
+          ],
         },
         {
           label: "Reference",

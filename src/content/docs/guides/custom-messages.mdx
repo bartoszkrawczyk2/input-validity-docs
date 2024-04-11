@@ -1,0 +1,34 @@
+---
+title: Custom messages
+description: Example showing how to display a custom message
+tableOfContents: false
+---
+
+import Playground from "../../../components/Playground.astro";
+
+Sometimes it's better to provide own translation instead of browser's defaults which are automatically set to user's language.
+You might want to do set custom messages for:
+
+- consistent translation - user might change app's language
+- more specific error messages
+
+This can be achieved with `input-validity` by using `message-*` attributes.
+
+<Playground
+  id="required-custom-message"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="text"
+    required
+    validation-message="#error"
+    message-value-missing="Hey! This field is mandatory."
+  />
+  <p id="error"></p>
+  <button>submit</button>
+</form>
+  `}
+  frameHeight={293}
+/>
+
+You can find complete list of supported `message-*` attributes [here](/reference/api-reference/).

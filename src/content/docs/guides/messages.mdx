@@ -1,0 +1,40 @@
+---
+title: Displaying messages
+description: Basic example showing how to display a message for a required field
+tableOfContents: false
+---
+
+import Playground from "../../../components/Playground.astro";
+
+This is a basic example demonstrating how `input-validity` can show error messages.
+
+Let's consider following input with `required` attribute. Try to submit and you will see the browser's default popover.
+
+<Playground
+  id="required-native"
+  htmlCode={`
+<form action="/submit">
+  <input type="text" required />
+  <button>submit</button>
+</form>
+  `}
+  frameHeight={126}
+/>
+
+You can use `input-validity`'s attribute `validation-message` to show the message in a DOM element instead of browser's default popover.
+
+<Playground
+  id="required-iv"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="text"
+    required
+    validation-message="#error"
+  />
+  <p id="error"></p>
+  <button>submit</button>
+</form>
+  `}
+  frameHeight={252}
+/>

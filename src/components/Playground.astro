@@ -3,15 +3,16 @@ import { Code } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 type Props = {
-  htmlCode: string;
-  cssCode: string;
+  htmlCode?: string;
+  cssCode?: string;
+  frameHeight?: number;
   id: string;
 };
 
-const { htmlCode = "", cssCode = "", id } = Astro.props;
+const { htmlCode = "", cssCode = "", id, frameHeight } = Astro.props;
 const base = import.meta.env.PROD ? Astro.site : "http://localhost:4321/";
 
-const src = encodeURI(`<!DOCTYPE html>
+const src = encodeURIComponent(`<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -23,13 +24,14 @@ const src = encodeURI(`<!DOCTYPE html>
 </head>
 <body>
 ${htmlCode}
+<script src="https://www.unpkg.com/input-validity"></script>
 </body>
 </html>`);
 ---
 
 <div class="playground not-content">
   <div>
-    <button class="reload" onclick={`${id}.src+=''`}>
+    <button class="reload" onclick={`document.getElementById("${id}").src+=''`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -46,16 +48,28 @@ ${htmlCode}
       >
       Reload
     </button>
-    <iframe id={id} src={`data:text/html;charset=utf-8,${src}`}></iframe>
+    <iframe
+      loading="lazy"
+      height={frameHeight}
+      id={id}
+      src={`data:text/html;charset=utf-8,${src}`}></iframe>
   </div>
   <div>
     <Tabs>
-      <TabItem label="HTML">
-        <Code code={htmlCode} lang="html" />
-      </TabItem>
-      <TabItem label="CSS">
-        <Code code={cssCode} lang="css" />
-      </TabItem>
+      {
+        htmlCode && (
+          <TabItem label="HTML">
+            <Code code={htmlCode} lang="html" />
+          </TabItem>
+        )
+      }
+      {
+        cssCode && (
+          <TabItem label="CSS">
+            <Code code={cssCode} lang="css" />
+          </TabItem>
+        )
+      }
     </Tabs>
   </div>
 </div>
@@ -63,7 +77,10 @@ ${htmlCode}
 <style>
   .playground {
     display: flex;
+    border-radius: 5px;
     gap: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    padding: 1rem;
   }
   .playground > div {
     width: 50%;

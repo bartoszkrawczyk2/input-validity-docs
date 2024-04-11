@@ -1,0 +1,47 @@
+---
+title: Styling
+description: Examples of styling error messages
+tableOfContents: false
+---
+
+import Playground from "../../../components/Playground.astro";
+
+It's a common practice to indicate error states with styles, usually with red outlines, red error messages etc.
+
+### Input border
+
+`input-validity` is adding `data-dirty` attribute after first submit attempt, but it's recommended to use [:invalid](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid) CSS pseudo-class to add error styles when input is invalid.
+
+<Playground
+  id="required-custom-message"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="text"
+    required
+    validation-message="#error"
+  />
+  <p id="error"></p>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}`}
+  frameHeight={252}
+/>
+
+Try to submit empty field and then add some value. Error styles will change to default automatically.
+
+### Styling error message
+
+`input-validity` doesn't control rendering of error message DOM element - it only update it's content.
+
+TODO: motivation and examples
+
+### TailwindCSS
+
+`input-validity` pairs nicely with TailwindCSS
+
+TODO: example
