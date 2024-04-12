@@ -105,10 +105,6 @@ input {
   border-radius: 3px;
 }
 
-p {
-  margin-bottom: 1rem;
-}
-
-.error-box {
+p, .error-box, fieldset {
   margin-bottom: 1rem;
 }

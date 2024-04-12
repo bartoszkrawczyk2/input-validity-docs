@@ -106,7 +106,49 @@ As you can see our error message element is visible even without any actual mess
 
 ### Styling parent element
 
-TODO: motivation (modern CSS with `:has()`) and examples
+When you want to style parent element, for example indicate an error on the parent element such as card, fields group etc, it's again recommended to just use CSS with `:has()`. This will reduce need for client side javascript, conditional rendering or class manipulation.
+
+<Playground
+  id="styling-empty-after"
+  htmlCode={`
+<form action="/submit">
+  <fieldset>
+    <label>Provide any value</label>
+    <input
+      type="text"
+      required
+      validation-message="#error"
+    />
+    <div id="error" class="error-box"></div>
+  </fieldset>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}
+
+fieldset {
+  background: #eee;
+  border-radius: 3px;
+  border: 2px solid transparent;
+}
+
+fieldset:has([data-dirty]:invalid) {
+  border-color: #e60202;
+}
+
+.error-box {
+  color: #e60202;
+}
+
+.error-box:empty {
+  display: none;
+}
+`}
+  frameHeight={612}
+/>
 
 ### TailwindCSS
 

@@ -16,7 +16,7 @@ via CDN, for example [unpkg](https://www.unpkg.com/):
 or with specific version:
 
 ```html
-<script src="https://www.unpkg.com/input-validity@0.1.1"></script>
+<script src="https://www.unpkg.com/input-validity@0.1.2"></script>
 ```
 
 CDN approach is extremely simple but you may want to consider [not using CDNs in production](https://blog.wesleyac.com/posts/why-not-javascript-cdn).
