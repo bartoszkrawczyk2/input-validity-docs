@@ -31,6 +31,24 @@ This can be achieved with `input-validity` by using `message-*` attributes.
   frameHeight={293}
 />
 
-TODO: Multiple `message-*` attributes
+It's also common to use multiple validation rules, for example required email field. For that we will use `required` with `message-value-missing` and `type="email"` with `message-type-mismatch`.
+
+<Playground
+  id="required-multiple"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="email"
+    required
+    validation-message="#error"
+    message-value-missing="This field is mandatory."
+    message-type-mismatch="Incorrect email address."
+  />
+  <p id="error"></p>
+  <button>submit</button>
+</form>
+  `}
+  frameHeight={320}
+/>
 
 You can find complete list of supported `message-*` attributes [here](/reference/api-reference/).
