@@ -13,7 +13,7 @@ It's a common practice to indicate error states with styles, usually with red ou
 `input-validity` is adding `data-dirty` attribute after first submit attempt, but it's recommended to use [:invalid](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid) CSS pseudo-class to add error styles when input is invalid.
 
 <Playground
-  id="required-custom-message"
+  id="styling-dirty"
   htmlCode={`
 <form action="/submit">
   <input
@@ -21,7 +21,7 @@ It's a common practice to indicate error states with styles, usually with red ou
     required
     validation-message="#error"
   />
-  <p id="error"></p>
+  <div id="error" class="error-box"></div>
   <button>submit</button>
 </form>
   `}
@@ -29,7 +29,7 @@ It's a common practice to indicate error states with styles, usually with red ou
   border-color: #e60202;
   outline: #e60202 solid 1px;
 }`}
-  frameHeight={252}
+  frameHeight={280}
 />
 
 Try to submit empty field and then add some value. Error styles will change to default automatically.
@@ -38,7 +38,71 @@ Try to submit empty field and then add some value. Error styles will change to d
 
 `input-validity` doesn't control rendering of error message DOM element - it only update it's content.
 
-TODO: motivation and examples
+However it's recommended to use `:empty` CSS pseudo-class to handle such situations. No need for conditional rendering, adding or removing DOM elements, no templating.
+
+Let's add some styles to our error message.
+
+<Playground
+  id="styling-empty-before"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="text"
+    required
+    validation-message="#error"
+  />
+  <div id="error" class="error-box"></div>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}
+
+.error-box {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #e60202;
+  border-radius: 3px;
+  background: #ffc4c4;
+}
+`}
+  frameHeight={300}
+/>
+
+As you can see our error message element is visible even without any actual message. We can hide it automatically with `:empty`
+
+<Playground
+  id="styling-empty-after"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="text"
+    required
+    validation-message="#error"
+  />
+  <div id="error" class="error-box"></div>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}
+
+.error-box {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #e60202;
+  border-radius: 3px;
+  background: #ffc4c4;
+}
+
+.error-box:empty {
+  display: none;
+}
+`}
+  frameHeight={412}
+/>
 
 ### Styling parent element
 
