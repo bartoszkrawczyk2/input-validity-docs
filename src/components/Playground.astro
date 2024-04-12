@@ -24,7 +24,7 @@ const src = encodeURIComponent(`<!DOCTYPE html>
 </head>
 <body>
 ${htmlCode}
-<script src="https://www.unpkg.com/input-validity"></script>
+<script src="/input-validity.js"></script>
 </body>
 </html>`);
 ---
@@ -59,14 +59,14 @@ ${htmlCode}
       {
         htmlCode && (
           <TabItem label="HTML">
-            <Code code={htmlCode} lang="html" />
+            <Code code={htmlCode} lang="html" class="code" />
           </TabItem>
         )
       }
       {
         cssCode && (
           <TabItem label="CSS">
-            <Code code={cssCode} lang="css" />
+            <Code code={cssCode} lang="css" class="code" />
           </TabItem>
         )
       }
@@ -74,7 +74,7 @@ ${htmlCode}
   </div>
 </div>
 
-<style>
+<style define:vars={{ frameHeight: `${frameHeight}px` }}>
   .playground {
     display: flex;
     border-radius: 5px;
@@ -90,7 +90,6 @@ ${htmlCode}
     margin-top: 1rem;
     width: 100%;
   }
-
   .playground .reload {
     border: 0;
     background: transparent;
@@ -106,5 +105,8 @@ ${htmlCode}
   .playground .reload svg {
     width: 0.8rem;
     height: 0.8rem;
+  }
+  .code :global(.frame pre) {
+    min-height: var(--frameHeight);
   }
 </style>
