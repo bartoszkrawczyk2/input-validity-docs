@@ -7,7 +7,7 @@ import Playground from "../../../components/Playground.astro";
 
 It's a common practice to indicate error states with styles, usually with red outlines, red error messages etc.
 
-### Input border
+## Input border
 
 `input-validity` is adding `data-dirty` attribute after first submit attempt, but it's recommended to use [:invalid](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid) CSS pseudo-class to add error styles when input is invalid.
 
@@ -33,7 +33,7 @@ It's a common practice to indicate error states with styles, usually with red ou
 
 Try to submit empty field and then add some value. Error styles will change to default automatically.
 
-### Styling error message
+## Styling error message
 
 `input-validity` doesn't control rendering of error message DOM element - it only update it's content.
 
@@ -98,7 +98,7 @@ As you can see our error message element is visible even without any actual mess
   frameHeight={412}
 />
 
-### Styling parent element
+## Styling parent element
 
 When you want to style parent element, for example indicate an error on the parent element such as card, fields group etc, it's again recommended to just use CSS with `:has()`. This will reduce need for client side javascript, conditional rendering or class manipulation.
 
@@ -139,7 +139,7 @@ fieldset:has([data-dirty]:invalid) {
   frameHeight={612}
 />
 
-### TailwindCSS
+## TailwindCSS
 
 `input-validity` pairs nicely with [TailwindCSS](https://tailwindcss.com/). Here's above example styled with Tailwind
 

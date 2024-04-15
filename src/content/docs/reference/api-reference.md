@@ -5,13 +5,13 @@ description: Attributes reference
 
 Following attributes can be used on any `<input />` element.
 
-### Attributes for specifying behaviour
+## Attributes for specifying behaviour
 
 | Attribute          | Value                                                           |
 | ------------------ | --------------------------------------------------------------- |
 | validation-message | CSS selector specifying where error message should be displayed |
 
-### Attributes for defining custom error messges
+## Attributes for defining custom error messges
 
 | Attribute                | Description                                                                                                                                                                                        | Corresponding ValidityState property                                                              |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -25,6 +25,6 @@ Following attributes can be used on any `<input />` element.
 | message-type-mismatch    | Input value is not in the required syntax (when [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type) is `email` or `url`)                                                  | [typeMismatch](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch)       |
 | message-value-missing    | Input element has a [required](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#required) attribute, but no value                                                                   | [valueMissing](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/valueMissing)       |
 
-### Experimental API
+## Experimental API
 
 TODO

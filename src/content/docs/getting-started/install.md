@@ -5,7 +5,7 @@ description: How to install and use input-validity
 
 Installing `input-validity` is as simple as adding a `<script>` tag to your page. No need for complicated build steps or systems.
 
-### CDN
+## CDN
 
 via CDN, for example [unpkg](https://www.unpkg.com/):
 
@@ -21,7 +21,7 @@ or with specific version:
 
 CDN approach is extremely simple but you may want to consider [not using CDNs in production](https://blog.wesleyac.com/posts/why-not-javascript-cdn).
 
-### Download a copy
+## Download a copy
 
 [Download](https://www.unpkg.com/input-validity@0.1.1/dist/iife/index.js) and copy it into your project to a public assets directory
 
@@ -29,7 +29,7 @@ CDN approach is extremely simple but you may want to consider [not using CDNs in
 <script src="/path/to/input-validity.js"></script>
 ```
 
-### NPM and bundlers
+## NPM and bundlers
 
 If you prefer you can also install with `npm` / `pnpm` / `yarn`:
 
