@@ -1,0 +1,64 @@
+---
+title: Examples
+description: More examples
+---
+
+import Playground from "../../../components/Playground.astro";
+import { Aside } from "@astrojs/starlight/components";
+
+Examples with common form validation scenarios.
+
+## Password validation
+
+<Playground
+  id="example-password-validation"
+  htmlCode={`
+<form action="/submit">
+  <input
+    type="password"
+    required
+    minlength="8"
+    pattern="^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[1-9])(?=.*[\\$\\@$\\!\\%\\*\\#\\?\\&\\-]).+$"
+    validation-message="#error"
+    message-value-missing="Password is required"
+    message-too-short="Must be at least 8 characters"
+    message-pattern-mismatch="Must contain capital letter, lowercase letter, number and a special character"
+  />
+  <div id="error" class="error-box"></div>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={`input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}\n
+.error-box {
+  color: #e60202;
+}\n
+.error-box:empty {
+  display: none;
+}
+`}
+  frameHeight={412}
+/>
+
+## Repeat password
+
+<Aside type="caution" title="Warning!">
+  This example uses experimental `pattern-same-as` attribute. It might break in
+  future releases.
+</Aside>
+
+TODO
+
+## Optional field
+
+TODO
+
+## URL validation
+
+TODO
+
+## 4-digit PIN
+
+TODO

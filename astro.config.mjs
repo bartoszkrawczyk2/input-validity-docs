@@ -25,6 +25,7 @@ export default defineConfig({
             { label: "Displaying messages", link: "/guides/messages" },
             { label: "Custom messages", link: "/guides/custom-messages" },
             { label: "Styling", link: "/guides/styling" },
+            { label: "More examples", link: "/guides/examples" },
           ],
         },
         {
