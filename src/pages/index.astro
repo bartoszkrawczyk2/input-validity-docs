@@ -4,10 +4,13 @@ import { Icon } from "@astrojs/starlight/components";
 import { Image } from "astro:assets";
 import logo from "../assets/input-validity.png";
 import Button from "../components/Button.astro";
+import Badges from "../components/Badges.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <StarlightPage frontmatter={{ title: "input-validity", template: "splash" }}>
   <div class="hero">
+    <Badges />
     <Image alt="input-validity examples" src={logo} quality="100" />
     <div class="not-content">
       <p>Enhanced HTML5 input validation</p>
@@ -28,9 +31,21 @@ import Button from "../components/Button.astro";
       </div>
     </div>
   </div>
+  <Footer />
 </StarlightPage>
 
 <style is:global>
+  h1 {
+    text-align: center;
+    margin-top: 2rem !important;
+  }
+  .content-panel {
+    border: 0 !important;
+    padding-top: 0 !important;
+  }
+</style>
+
+<style>
   .hero {
     text-align: center;
   }
@@ -44,15 +59,7 @@ import Button from "../components/Button.astro";
     margin-top: 0;
   }
   .hero > div {
-    margin-top: 0 !important;
-  }
-  h1 {
-    text-align: center;
-    margin-top: 2rem !important;
-  }
-  .content-panel {
-    border: 0 !important;
-    padding-top: 0 !important;
+    margin-top: 0;
   }
   .buttons {
     margin-top: 2rem;
