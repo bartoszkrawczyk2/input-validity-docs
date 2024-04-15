@@ -6,6 +6,17 @@ description: More examples
 import Playground from "../../../components/Playground.astro";
 import { Aside } from "@astrojs/starlight/components";
 
+export const examplesCss = `input[data-dirty]:invalid {
+  border-color: #e60202;
+  outline: #e60202 solid 1px;
+}\n
+.error-box {
+  color: #e60202;
+}\n
+.error-box:empty {
+  display: none;
+}`;
+
 Examples with common form validation scenarios.
 
 ## Password validation
@@ -28,18 +39,8 @@ Examples with common form validation scenarios.
   <button>submit</button>
 </form>
   `}
-  cssCode={`input[data-dirty]:invalid {
-  border-color: #e60202;
-  outline: #e60202 solid 1px;
-}\n
-.error-box {
-  color: #e60202;
-}\n
-.error-box:empty {
-  display: none;
-}
-`}
-  frameHeight={412}
+  cssCode={examplesCss}
+  frameHeight={400}
 />
 
 ## Repeat password
@@ -49,7 +50,41 @@ Examples with common form validation scenarios.
   future releases.
 </Aside>
 
-TODO
+<Playground
+  id="example-password-repeat"
+  htmlCode={`
+<form action="/submit">
+  <label for="password">
+    Password
+  </label>
+  <input
+    id="password"
+    type="password"
+    required
+    validation-message="#password-error"
+    message-value-missing="Password is required"
+  />
+  <div id="password-error" class="error-box"></div>
+
+  <label for="repeat-password">
+    Repeat password
+  </label>
+  <input
+    id="repeat-password"
+    type="password"
+    required
+    pattern-same-as="#password"
+    validation-message="#repeat-error"
+    message-value-missing="Please repeat password"
+    message-pattern-mismatch="Repeated password be the same"
+  />
+  <div id="repeat-error" class="error-box"></div>
+  <button>submit</button>
+</form>
+  `}
+  cssCode={examplesCss}
+  frameHeight={760}
+/>
 
 ## Optional field
 
