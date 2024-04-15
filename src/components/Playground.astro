@@ -3,13 +3,14 @@ import { Code } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 type Props = {
+  head?: string;
   htmlCode?: string;
   cssCode?: string;
   frameHeight?: number;
   id: string;
 };
 
-const { htmlCode = "", cssCode = "", id, frameHeight } = Astro.props;
+const { htmlCode = "", cssCode = "", id, frameHeight, head = "" } = Astro.props;
 const base = import.meta.env.PROD ? Astro.site : "http://localhost:4321/";
 
 const src = encodeURIComponent(`<!DOCTYPE html>
@@ -21,6 +22,7 @@ const src = encodeURIComponent(`<!DOCTYPE html>
 <style>${cssCode}</style>
 <base href="${base}" />
 <link rel="stylesheet" href="/reset.css" />
+${head}
 </head>
 <body>
 ${htmlCode}
