@@ -16,14 +16,14 @@ via CDN, for example [unpkg](https://www.unpkg.com/):
 or with specific version:
 
 ```html
-<script src="https://www.unpkg.com/input-validity@0.1.2"></script>
+<script src="https://www.unpkg.com/input-validity@0.1.5"></script>
 ```
 
 CDN approach is extremely simple but you may want to consider [not using CDNs in production](https://blog.wesleyac.com/posts/why-not-javascript-cdn).
 
 ## Download a copy
 
-[Download](https://www.unpkg.com/input-validity@0.1.1/dist/iife/index.js) and copy it into your project to a public assets directory
+[Download](https://www.unpkg.com/input-validity@0.1.5/dist/iife/index.js) and copy it into your project to a public assets directory
 
 ```html
 <script src="/path/to/input-validity.js"></script>
