@@ -11,6 +11,9 @@ export default defineConfig({
       social: {
         github: "https://github.com/bartoszkrawczyk2/input-validity",
       },
+      components: {
+        Head: "./src/components/Head.astro",
+      },
       sidebar: [
         {
           label: "Getting started",

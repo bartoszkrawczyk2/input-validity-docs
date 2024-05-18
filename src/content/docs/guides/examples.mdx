@@ -45,11 +45,6 @@ Examples with common form validation scenarios.
 
 ## Repeat password
 
-<Aside type="caution" title="Warning!">
-  This example uses experimental `pattern-same-as` attribute. It might break in
-  future releases.
-</Aside>
-
 <Playground
   id="example-password-repeat"
   htmlCode={`
@@ -73,7 +68,7 @@ Examples with common form validation scenarios.
     id="repeat-password"
     type="password"
     required
-    pattern-same-as="#password"
+    pattern-value="#password"
     validation-message="#repeat-error"
     message-value-missing="Please repeat password"
     message-pattern-mismatch="Repeated password be the same"

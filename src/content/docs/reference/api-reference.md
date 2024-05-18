@@ -7,9 +7,10 @@ Following attributes can be used on any `<input />` element.
 
 ## Attributes for specifying behaviour
 
-| Attribute          | Value                                                           |
-| ------------------ | --------------------------------------------------------------- |
-| validation-message | CSS selector specifying where error message should be displayed |
+| Attribute          | Value        | Description                                                                                                                                                                     |
+| ------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| validation-message | CSS selector | Specifu where error messages should be displayed.                                                                                                                               |
+| pattern-value      | CSS selector | Dynamically set a value for [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern) validation from an input. Useful for stuff like password repeat. |
 
 ## Attributes for defining custom error messges
 
@@ -25,6 +26,34 @@ Following attributes can be used on any `<input />` element.
 | message-type-mismatch    | Input value is not in the required syntax (when [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type) is `email` or `url`)                                                  | [typeMismatch](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch)       |
 | message-value-missing    | Input element has a [required](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#required) attribute, but no value                                                                   | [valueMissing](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/valueMissing)       |
 
-## Experimental API
+## Methods
 
-TODO
+In some situations you might need to tell `input-validity` that DOM has been changed by other library. For this purpose there is the `init()` method, accessible via global variable or imported from the module.
+
+- when `input-validit` is loaded directly with `<script>` tag:
+
+```js
+InputValidity.init();
+```
+
+- when loaded as a module:
+
+```js
+import { init } from "input-validity";
+
+init();
+```
+
+This is useful especially when [HTMX](https://htmx.org/) updates the DOM or after [Astro](https://astro.build/)'s View Transition:
+
+```js
+document.addEventListener("astro:after-swap", () => {
+  InputValidity.init();
+});
+```
+
+```js
+htmx.on("htmx:load", () => {
+  InputValidity.init();
+});
+```
